@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import
+import CurrencyConverter from './Components/CurrencyConverter'
 
 class App extends Component {
   render() {
     return (
-      <div>
-
-      </div>
+      <>
+        <h2>Higher Order Component</h2>
+        <CurrencyConverter/>
+      </>
     );
   }
 }
