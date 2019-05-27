@@ -1,14 +1,38 @@
 import React, {Component} from 'react'
 
-export default function withCurrency(BaseComponent){
+const withCurrency = (BaseComponent) => {
   class Currency extends Component {
-    constructor(){
-      super()
-      this.state = {
-        currencyChosen: false,
-        selectedCurrency: 'Select Currency',
-        amount: 0
-      }
+    state = {
+      currencyChosen: false,
+      selectedCurrency: 'Select Currency',
+      amount: 0
+    }
+
+    handleAmountIncrease = () => {
+      this.setState((prevState) => {
+        return {
+          amount: prevState.amount
+        }
+      })
+    }
+
+    handleAmountDecrease = () => {
+      this.state.amount > 0 &&
+      this.setState((prevState) => {
+        return {
+          amount: prevState.amount - 1
+        }
+      })
+    }
+
+    handleOptionSelect = (evt) => {
+      const userValue = evt.target.value
+      this.setState(() => {
+        return {
+          selectedCurrency: userValue,
+          currencyChosen: userValue === 'Selected Curreny' ? false : true
+        }
+      })
     }
 
     render(){
