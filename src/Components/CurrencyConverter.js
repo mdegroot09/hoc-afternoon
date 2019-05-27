@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import CurrencyDisplay from './CurrencyDisplay'
 
 const withCurrency = (BaseComponent) => {
   class Currency extends Component {
@@ -58,8 +59,8 @@ const withCurrency = (BaseComponent) => {
             </option>
           </select>
           <div>
-            <button className='add'>+</button>
-            <button className='minus'>-</button>
+            <button className='add' onClick={this.handleAmountIncrease}>+</button>
+            <button className='minus' onClick={this.handleAmountDecrease}>-</button>
           </div>
           <BaseComponent
             currency={currencyData[this.state.selectedCurrency]}
@@ -70,3 +71,7 @@ const withCurrency = (BaseComponent) => {
     }
   }
 }
+
+const ExchangedCurrency = withCurrency(CurrencyDisplay)
+
+export default ExchangedCurrency
